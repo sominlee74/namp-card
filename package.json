@@ -10,11 +10,13 @@
   "author": "ragingwind <ragingwind@gmail.com>",
   "scripts": {
     "start": "http-server ./src -o",
-    "test": "amphtml-validator ./src/index.html"
+    "test": "amphtml-validator ./src/index.html",
+    "deploy": "gh-pages -d src"
   },
   "license": "MIT",
   "devDependencies": {
     "amphtml-validator": "^1.0.15",
+    "gh-pages": "^0.12.0",
     "http-server": "^0.9.0"
   }
 }
