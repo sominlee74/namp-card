@@ -1,4 +1,4 @@
-// service-worker.js
+// sw.js
 
 var CACHE_NAME = 'pwa-workshop.github.id-namp-card-cache-v1';
 var urlsToCache = [
