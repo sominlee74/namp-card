@@ -1,6 +1,6 @@
 // service-worker.js
 
-var CACHE_NAME = 'userid.github.id-cache-v1';
+var CACHE_NAME = 'userid.github.id-namp-card-cache-v1';
 var urlsToCache = [
 	'/',
 ];
@@ -8,7 +8,7 @@ var urlsToCache = [
 self.addEventListener('install', function(event) {
 	event.waitUntil(
 		caches.open(CACHE_NAME).then(function(cache) {
-			console.log('Opened cache');
+			console.log('Opened cache for namp-card');
 			return cache.addAll(urlsToCache);
 		})
 	);
