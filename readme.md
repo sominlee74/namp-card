@@ -2,7 +2,7 @@
 
 > AMPlified (very simple) name card as Progressive Web App
 
-# How to use
+# How to run
 
 Make sure that run `npm isntall` or `yarn isntall` command on terminal before run commands below.
 
@@ -12,6 +12,9 @@ npm start
 
 # test with [amphtml validator](https://www.npmjs.com/package/amphtml-validator)
 npm test
+
+# deploy
+npm run deploy
 ```
 
 # References
