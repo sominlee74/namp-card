@@ -16,7 +16,7 @@
 - git: git/github 를 통해서 코드랩은 진행됩니다. git 으로 프로젝트를 운영하고 이 프로젝트를 각 github 사용자의 리퍼지토리로 모두 fork 후에 github 의 pages 를 통해서 배포합니다.
 - Node.js: 이 코드랩 프로젝트의 디펜던시(Depdencies) 설치를 포함하여 실행, 테스트 그리고 배포작업은 모두 node 를 기반으로 동작합니다.
 - yarn[옵션]: 이 프로젝트는 현재 yarn 명령을 지원합니다. 빠른 설치를 위해서 yarn 을 설치하시기를 권장합니다.
-- editorconfig: 이 프로젝트는 editorconfig 를 사용하여 문서의 들여쓰기와 트림(trim) 스타일을 관리합니다. 만약 master 에 업데이트를 원한다면 설치를 권장합니다.
+- editorconfig[옵션]: 이 프로젝트는 editorconfig 를 사용하여 문서의 들여쓰기와 트림(trim) 스타일을 관리합니다. 만약 master 에 업데이트를 원한다면 설치를 권장합니다.
 
 
 ## AMP
