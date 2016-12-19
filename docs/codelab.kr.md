@@ -21,6 +21,62 @@
 
 ## AMP
 
+[AMP](https://www.ampproject.org/ko/)는 모바일 웹에서 최상의 사용성을 제공하기 위한 구글의 새로운 프로젝트입니다.
+AMP에서는 성능에 영향을 줄 수 있는 요인들을 최소화하고 Google AMP Cache를 이용해서 웹사이트의 빠른 로딩을 추구합니다.
+
+### 왜 AMP는 빠른가?
+AMP는 성능에 영향을 줄 수 있는 몇가지 요인들을 완전히 배제하는 걸 목표로 두고 있습니다.
+AMP 공식 홈페이지의 (AMP가 성능을 향상시키는 방식)[https://www.ampproject.org/ko/learn/how-amp-works/]에 따르면,
+
+- 비동기 스크립트만 허용
+- 모든 리소스의 크기를 정적으로 지정
+- 확장 메커니즘이 렌더링을 차단하지 않도록 함
+- 타사 JavaScript 제거
+- CSS의 인라인 지정 및 크기 한정
+- 웹 폰트 효율화
+- GPU 가속 애니메이션만 실행
+- 리소스 로드 우선순위 지정
+- 즉시 페이지 로드
+
+등 단순히 AMP라서 빠르다기보단 기존 형태로 모바일 페이지를 만듦에 있어서도 지키면 페이지 로딩 속도를 보장받을 수 있는 내용을 담고 있습니다.
+
+### 기본 AMP 페이지 작성하기
+
+AMP 페이지 작성은 매우 단순합니다.
+```<!doctype html>
+<html amp lang="ko">
+ <head>
+	 <meta charset="utf-8">
+	 <title>Hello, AMPs</title>
+	 <link rel="canonical" href="http://example.ampproject.org/article-metadata.html" />
+	 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+	 <!-- ld+json 영역은 AMP에서 필수영역은 아닙니다 -->
+	 <script type="application/ld+json">
+		 {
+			 "@context": "http://schema.org",
+			 "@type": "NewsArticle",
+			 "headline": "Open-source framework for publishing content",
+			 "datePublished": "2015-10-07T12:02:41Z",
+			 "image": [
+				 "logo.jpg"
+			 ]
+		 }
+	 </script>
+	 <!-- AMP 실행시 기본으로 필요한 CSS입니다 -->
+	 <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+	 <style amp-custom> /* 내가 작성할 CSS </style>
+	 <script async src="https://cdn.ampproject.org/v0.js"></script>
+ </head>
+ <body>
+	 <h1>Welcome to the mobile web</h1>
+ </body>
+</html>
+```
+
+### AMP 페이지 검증하기
+AMP 페이지의 검증단계 또한 매우 단순합니다.
+브라우저 경로에서 `#development=1` 이라 추가하기만 하면 됩니다.
+
 ## PWA: 서비스워커(Service Worker)
 
 [서비스 워커](https://slightlyoff.github.io/ServiceWorker/spec/service_worker/)는 [웹 워커](https://www.w3.org/TR/workers/)의 한 종류입니다. 웹워커는 기본적으로 메인 페이지와 병렬로 실행되는 **스크립트 백그라운드 실행기(Worker)를 생성**하는 API로 **메세지 전송 기반의 Thread와 유사한 동작**을 가능하게 하는 역할을 수행합니다.
