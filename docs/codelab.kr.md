@@ -66,7 +66,7 @@ AMP 페이지 작성은 매우 단순합니다.
 	 </script>
 	 <!-- AMP 실행시 기본으로 필요한 CSS입니다 -->
 	 <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
-	 <style amp-custom> /* 내가 작성할 CSS </style>
+	 <style amp-custom> /* 내가 작성할 CSS */ </style>
 	 <script async src="https://cdn.ampproject.org/v0.js"></script>
  </head>
  <body>
