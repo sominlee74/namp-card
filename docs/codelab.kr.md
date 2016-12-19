@@ -23,6 +23,71 @@
 
 ## PWA: 서비스워커(Service Worker)
 
+[서비스 워커](https://slightlyoff.github.io/ServiceWorker/spec/service_worker/)는 [웹 워커](https://www.w3.org/TR/workers/)의 한 종류입니다. 웹워커는 기본적으로 메인 페이지와 병렬로 실행되는 **스크립트 백그라운드 실행기(Worker)를 생성**하는 API로 **메세지 전송 기반의 Thread와 유사한 동작**을 가능하게 하는 역할을 수행합니다.
+
+서비스 워커는 워커의 특징을 그대로 계승하지만, 브라우저에 설치되어 지속적으로 동작하는 형태로 다음과 같이 시스템 컴포넌트와 유사한 특징을 추가로 가지고 있습니다. 페이지가 실행 중이지 않더라도 브라우저에 의해 동작하며, [원격 푸시 알림](https://developers.google.com/web/fundamentals/getting-started/codelabs/push-notifications/)이나 [백그라운드 동기화](https://developers.google.com/web/updates/2015/12/background-sync)와 같은 페이지 외부에 존재하는 기능들의 제어를 위한 이벤트 모델을 제공합니다.
+
+> 본래 서비스 워커는 HTTPS 프로토콜 하에서만 동작합니다만, 개발 편의성을 위해 localhost를 통해서 테스트가 가능합니다.
+
+### 오프라인 캐시를 위한 서비스 워커 작성
+
+오프라인 웹앱을 지원하기 위해 `index.html`과 동일한 레벨(`src/`)에 `sw.js`라는 이름으로 서비스 워커 로직을 생성하고 다음과 같이 작성합니다.
+
+```javascript
+var CACHE_NAME = 'pwa-workshop.github.id-namp-card-cache-v1';
+var urlsToCache = [
+	'/namp-card'
+];
+
+self.addEventListener('install', function(event) {
+	// 캐싱 도중 서비스워커가 종료되지 않도록 이벤트의 라이프 사이클을 연장합니다.
+	event.waitUntil(
+		// Cache Storage를 생성하고,
+		caches.open(CACHE_NAME).then(function(cache) {
+			console.log(`Opened cache for namp-card ${new Date()}`);
+			// 기술된 모든 리소스를 미리 fetch해서 캐시에 저장해둡니다.
+			return cache.addAll(urlsToCache);
+		})
+	);
+	console.log('SW installed', event);
+});
+
+// fetch 이벤트는 URL scope에 해당하는 요청이 발생 시 이벤트로 전달됩니다.
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    // 현재 요청과 매치되는 캐시 데이터가 있는지 확인해서
+    caches.match(event.request.url).then(function(response) {
+      // 있다면 해당 캐시 데이터를 전달하고,
+      return response
+        // 없다면 네트워크 fetch를 통해 전달합니다.
+        || fetch(event.request);
+    })
+  );
+});
+```
+
+### 서비스 워커의 등록
+
+서비스 워커는 `navigator.serviceWorker.register()`를 통해 등록할 수 있습니다만, AMP는 스크립트를 직접 작성하는 것을 허용하지 않습니다. 대신 [`amp-install-serviceworker`](https://www.ampproject.org/docs/reference/components/amp-install-serviceworker)를 통해 서비스 워커를 등록할 수 있습니다. 이 컴포넌트를 사용하기 위해 다음과 같이 스크립트 태그를 html 페이지에 작성합니다.
+
+```html
+<script async custom-element="amp-install-serviceworker" src="https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js"></script>
+```
+
+이제 서비스 워커를 등록하기 위해 다음과 같이 컴포넌트를 html 문서 내에 작성합니다.
+
+```html
+  <amp-install-serviceworker
+      src="./sw.js"
+      layout="nodisplay">
+  </amp-install-serviceworker>
+```
+
+서비스 워커에 대해 더 알고 싶으시다면 다음 링크를 참조하세요.
+
+* [서비스워커 101](http://www.slideshare.net/cwdoh/service-worker-101)
+* [서비스워커 201](http://www.slideshare.net/cwdoh/service-worker-201)
+
 ## PWA: 설치형 웹앱(Installable Web App) / Web Manifest
 
 먼저 명함에 사용될 이미지를 준비합니다. 그 이미지를 그대로 앱의 아이콘으로 활용할 것임으로 192/384 해상도가 되어도 잘 식별 할 수 있는 이미지를 고르세요. 또는 별도의 단순한 모양의 아이콘을 하셔도 됩니다. 아이콘을 준비하셨다면 이제 그 아이콘을 두가지 크기의 버전으로 준비합니다. 홈스크린과 테스크 스위처에서 사용될 192x192 사이즈와 스플래쉬 스크린에 사용될 384x384 사이즈로 준비합니다. 각각의 이름을 아래와 같이 설정하고 src/ 파일 밑에 복사합니다.
