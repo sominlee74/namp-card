@@ -43,7 +43,9 @@ AMP 공식 홈페이지의 (AMP가 성능을 향상시키는 방식)[https://www
 ### 기본 AMP 페이지 작성하기
 
 AMP 페이지 작성은 매우 단순합니다.
-```<!doctype html>
+
+```html
+<!doctype html>
 <html amp lang="ko">
  <head>
 	 <meta charset="utf-8">
