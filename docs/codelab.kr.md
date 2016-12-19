@@ -24,3 +24,34 @@
 ## PWA: 서비스워커(Service Worker)
 
 ## PWA: 설치형 웹앱(Installable Web App) / Web Manifest
+
+먼저 명함에 사용될 이미지를 준비합니다. 그 이미지를 그대로 앱의 아이콘으로 활용할 것임으로 192/384 해상도가 되어도 잘 식별 할 수 있는 이미지를 고르세요. 또는 별도의 단순한 모양의 아이콘을 하셔도 됩니다. 아이콘을 준비하셨다면 이제 그 아이콘을 두가지 크기의 버전으로 준비합니다. 홈스크린과 테스크 스위처에서 사용될 192x192 사이즈와 스플래쉬 스크린에 사용될 384x384 사이즈로 준비합니다. 각각의 이름을 아래와 같이 설정하고 src/ 파일 밑에 복사합니다.
+
+- icon-192x192.png
+- icon-384x384.png
+
+마지막으로 manifest.json 파일을 생성하고 아래 코드를 추가합니다. 아래 프로퍼티에서 `name`, `short_name`, `background_color` 그리고 `theme_color` 를 원하시는 값으로 적절히 설정하면 됩니다. 각 프로퍼티에 대한 자세한 내용은 PWA Workshop 로스쇼 자료, [Turn into an Installable Webapp](https://goo.gl/owjJ7R) 을 참고하세요 
+
+```js
+{
+	"name": "namp-card",
+	"short_name": "namp-card",
+	"icons": [
+		{
+			"src": "icon-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "icon-384x384.png",
+			"sizes": "384x384",
+			"type": "image/png"
+		}
+	],
+	"start_url": "./?utm_source=web_app_manifest",
+	"display": "standalone",
+	"orientation": "portrait",
+	"background_color": "#FFFFFF",
+	"theme_color": "#3F51B5"
+}
+```
