@@ -26,7 +26,7 @@ AMP에서는 성능에 영향을 줄 수 있는 요인들을 최소화하고 Goo
 
 ### 왜 AMP는 빠른가?
 AMP는 성능에 영향을 줄 수 있는 몇가지 요인들을 완전히 배제하는 걸 목표로 두고 있습니다.
-AMP 공식 홈페이지의 (AMP가 성능을 향상시키는 방식)[https://www.ampproject.org/ko/learn/how-amp-works/]에 따르면,
+AMP 공식 홈페이지의 [AMP가 성능을 향상시키는 방식](https://www.ampproject.org/ko/learn/how-amp-works)에 따르면,
 
 - 비동기 스크립트만 허용
 - 모든 리소스의 크기를 정적으로 지정
