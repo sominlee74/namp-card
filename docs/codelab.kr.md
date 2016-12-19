@@ -129,7 +129,9 @@ self.addEventListener('fetch', function(event) {
 서비스 워커는 `navigator.serviceWorker.register()`를 통해 등록할 수 있습니다만, AMP는 스크립트를 직접 작성하는 것을 허용하지 않습니다. 대신 [`amp-install-serviceworker`](https://www.ampproject.org/docs/reference/components/amp-install-serviceworker)를 통해 서비스 워커를 등록할 수 있습니다. 이 컴포넌트를 사용하기 위해 다음과 같이 스크립트 태그를 html 페이지에 작성합니다.
 
 ```html
-<script async custom-element="amp-install-serviceworker" src="https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js"></script>
+<script async custom-element="amp-install-serviceworker"
+	src="https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js">
+</script>
 ```
 
 이제 서비스 워커를 등록하기 위해 다음과 같이 컴포넌트를 html 문서 내에 작성합니다.
