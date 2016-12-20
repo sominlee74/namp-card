@@ -3,10 +3,10 @@
 //var CACHE_NAME = 'pwa-workshop.github.id-namp-card-cache-v1';
 var CACHE_NAME = 'myCache-Simon.id-namp-card-cache-v1';
 var urlsToCache = [
-	'/namp-card',
-	'/namp-card/index.html',
-	'/namp-card/manifest.json',
-	'/namp-card/user.png'
+	'./namp-card',
+	'./namp-card/index.html',
+	'./namp-card/manifest.json',
+	'./namp-card/user.png'
 ];
 
 self.addEventListener('install', function(event) {
