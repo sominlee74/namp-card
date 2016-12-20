@@ -9,9 +9,9 @@
   },
   "author": "ragingwind <ragingwind@gmail.com>",
   "scripts": {
-    "start": "http-server ./src -o",
-    "test": "amphtml-validator ./src/index.html",
-    "deploy": "gh-pages -d src"
+    "start": "http-server . -a localhost -o /namp-card",
+    "test": "amphtml-validator ./namp-card/index.html",
+    "deploy": "gh-pages -d namp-card"
   },
   "license": "MIT",
   "devDependencies": {
