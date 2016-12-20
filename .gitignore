@@ -1,1 +1,8 @@
+# For Mac
+.DS_Store
+# Jetbrain Tools
+.idea/
+
+# Node.js
+npm-debug.log
 node_modules

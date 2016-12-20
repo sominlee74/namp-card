@@ -1,8 +1,12 @@
 // sw.js
 
-var CACHE_NAME = 'pwa-workshop.github.id-namp-card-cache-v1';
+//var CACHE_NAME = 'pwa-workshop.github.id-namp-card-cache-v1';
+var CACHE_NAME = 'myCache-Simon.id-namp-card-cache-v1';
 var urlsToCache = [
-	'/namp-card'
+	'/namp-card',
+	'/namp-card/index.html',
+	'/namp-card/manifest.json',
+	'/namp-card/user.png'
 ];
 
 self.addEventListener('install', function(event) {
@@ -10,6 +14,14 @@ self.addEventListener('install', function(event) {
 		caches.open(CACHE_NAME).then(function(cache) {
 			console.log(`Opened cache for namp-card ${new Date()}`);
 			return cache.addAll(urlsToCache);
+		})
+	);
+});
+
+self.addEventListener('fetch', function(event) {
+	event.waitUntil(
+		caches.match(event.request.url).then(function(res) {
+			return res || fetch(event.request.url);
 		})
 	);
 });
