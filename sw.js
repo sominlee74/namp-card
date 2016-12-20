@@ -13,7 +13,7 @@ self.addEventListener('install', function(event) {
 	event.waitUntil(
 		caches.open(CACHE_NAME).then(function(cache) {
 			console.log(`Opened cache for namp-card ${new Date()}`);
-			return caches.addAll(urlsToCache);
+			return cache.addAll(urlsToCache);
 		})
 	);
 });
