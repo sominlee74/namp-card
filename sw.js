@@ -4,9 +4,9 @@
 var CACHE_NAME = 'myCache-Simon.id-namp-card-cache-v1';
 var urlsToCache = [
 	'/namp-card',
-	'/index.html',
-	'/manifest.json',
-	'/user.png'
+	'/namp-card/index.html',
+	'/namp-card/manifest.json',
+	'/namp-card/user.png'
 ];
 
 self.addEventListener('install', function(event) {
